@@ -10,8 +10,8 @@ public class MenuScreen : IScreen {
     private readonly PrimitiveRenderer _primitives;
     private readonly int _screenWidth;
     private readonly int _screenHeight;
-    private readonly string[] _items = { "Sorting Algorithms", "Maze Solvers" };
-    private readonly ScreenType[] _targets = { ScreenType.SortingVisualizer, ScreenType.MazeVisualizer };
+    private readonly string[] _items = { "Sorting Algorithms", "Search Algorithms", "Maze Solvers" };
+    private readonly ScreenType[] _targets = { ScreenType.SortingVisualizer, ScreenType.SearchVisualizer, ScreenType.MazeVisualizer };
     private int _selectedIndex;
     private ScreenType? _transition;
 

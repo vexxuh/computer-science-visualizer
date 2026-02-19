@@ -7,7 +7,8 @@ namespace comp_sci.Screens;
 public enum ScreenType {
     MainMenu,
     SortingVisualizer,
-    MazeVisualizer
+    MazeVisualizer,
+    SearchVisualizer
 }
 
 public interface IScreen {

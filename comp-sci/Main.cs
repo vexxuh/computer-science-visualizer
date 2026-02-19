@@ -43,11 +43,17 @@ public class Main : Game {
         var mazeRenderer = new MazeRenderer(primitives, font, 1280, 720);
         var mazeScreen = new MazeScreen(mazeVisualizer, mazeRenderer);
 
+        // Search screen
+        var searchVisualizer = new SearchVisualizer();
+        var searchRenderer = new SearchRenderer(primitives, font, 1280, 720);
+        var searchScreen = new SearchScreen(searchVisualizer, searchRenderer);
+
         // Menu screen
         var menuScreen = new MenuScreen(font, primitives, 1280, 720);
 
         _screenManager.Register(ScreenType.MainMenu, menuScreen);
         _screenManager.Register(ScreenType.SortingVisualizer, sortingScreen);
+        _screenManager.Register(ScreenType.SearchVisualizer, searchScreen);
         _screenManager.Register(ScreenType.MazeVisualizer, mazeScreen);
         _screenManager.SetActive(ScreenType.MainMenu);
     }
