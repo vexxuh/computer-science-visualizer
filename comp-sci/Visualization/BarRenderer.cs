@@ -1,19 +1,19 @@
+using comp_sci.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace comp_sci.Visualization;
 
 public class BarRenderer {
-    private readonly Texture2D _pixel;
+    private readonly PrimitiveRenderer _primitives;
     private readonly SpriteFont _font;
     private readonly int _screenWidth;
     private readonly int _screenHeight;
     private const int TopMargin = 60;
     private const int BottomMargin = 10;
 
-    public BarRenderer(GraphicsDevice graphicsDevice, SpriteFont font, int screenWidth, int screenHeight) {
-        _pixel = new Texture2D(graphicsDevice, 1, 1);
-        _pixel.SetData(new[] { Color.White });
+    public BarRenderer(PrimitiveRenderer primitives, SpriteFont font, int screenWidth, int screenHeight) {
+        _primitives = primitives;
         _font = font;
         _screenWidth = screenWidth;
         _screenHeight = screenHeight;
@@ -34,13 +34,13 @@ public class BarRenderer {
                 System.Math.Max((int)barWidth - 1, 1),
                 (int)height
             );
-            spriteBatch.Draw(_pixel, rect, barColors[i]);
+            _primitives.FillRect(spriteBatch, rect, barColors[i]);
         }
 
         string info = $"{algorithmName}   Speed: {stepsPerFrame}x   {(paused ? "[PAUSED]" : "")}";
         spriteBatch.DrawString(_font, info, new Vector2(10, 10), Color.White);
 
-        string controls = "Space:Pause  Arrows:Algo/Speed  R:Reshuffle";
+        string controls = "Space:Pause  Arrows:Algo/Speed  R:Reshuffle  Backspace:Menu";
         spriteBatch.DrawString(_font, controls, new Vector2(10, 35), Color.Gray);
     }
 }
